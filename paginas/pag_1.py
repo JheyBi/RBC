@@ -2,26 +2,26 @@ import json
 import PySimpleGUI as sg
 
 def pag_1():
-    area_damaged = ["areas baixas", "espalhado", "campo inteiro", "areas superiores", "Desconhecido"]
+    area_damaged = ["Areas baixas", "Espalhado", "Campo inteiro", "Areas superiores", "Desconhecido"]
 
-    canker_lesion = ["Bronzeado a marrom", "marrom", "marrom escuro", "Desconhecido"]
+    canker_lesion = ["Bronzeado a marrom", "Marrom", "Marrom escuro", "Desconhecido"]
 
-    crop_hist = ["dif-1 ano", "mesmo-1 ano", "mesmo-2 ano", "mesmo-7 ano", "Desconhecido"]
+    crop_hist = ["Dif-1 ano", "Mesmo-1 ano", "Mesmo-2 ano", "Mesmo-7 ano", "Desconhecido"]
 
     date = ["Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro",
             "Dezembro", "Desconhecido"]
 
     external_decay = ["Ausente", "Firme-seco", "Desconhecido"]
 
-    Fruit_spots = ["Ausente", "Colore", "Escuro", "Desconhecido"]
+    Fruit_spots = ["Ausente", "Colorido", "Escuro", "Desconhecido"]
 
     fruiting_bodies = ["Ausente", "Presente", "Desconhecido"]
 
     fruit_pods = ["Normais", "Pouco presente", "Doente", "Desconhecido"]
 
-    germination = ["90-100%", "80-89%", "lt-80%", "Desconhecido"]
+    germination = ["90-100%", "80-89%", "Lt-80%", "Desconhecido"]
 
-    hail = ["Sim", "Não", "Desconhecido"]
+    hail = ["Sim", "Nao", "Desconhecido"]
 
     int_discolor = ["Nenhuma", "Marrom", "Preto", "Desconhecido"]
 
@@ -33,45 +33,45 @@ def pag_1():
 
     leafspots_halo = ["Ausente", "Sem Aereolado", "Com Aereolado", "Desconhecido"]
 
-    leafspot_size = ["lt-1/8", "gt-1/8", "Desconhecido"]
+    leafspot_size = ["Lt-1/8", "Gt-1/8", "Desconhecido"]
 
     leafspot_marg = ["Sem Marg", "Com marg", "Desconhecido"]
 
-    leaves = ["Normais", "Anormais", "Desconhecido"]
+    leaves = ["Normal", "Anormal", "Desconhecido"]
 
-    lodging = ["Sim", "Não", "Desconhecido"]
+    lodging = ["Sim", "Nao", "Desconhecido"]
 
     mold_growth = ["Ausente", "Presente", "Desconhecido"]
 
     mycelium = ["Ausente", "Presente", "Desconhecido"]
 
-    plant_growth = ["Normais", "Anormais", "Desconhecido"]
+    plant_growth = ["Normal", "Anormal", "Desconhecido"]
 
-    plant_stand = ["Normal", "lt-normal", "Desconhecido"]
+    plant_stand = ["Normal", "Lt-normal", "Desconhecido"]
 
-    precip = ["gt-normais", "lt-normais", "normais", "Desconhecido"]
+    precip = ["Gt-normal", "Lt-normal", "Normal", "Desconhecido"]
 
     roots = ["Normal", "Podre", "Cortadas-off", "Desconhecido"]
 
     sclerotia = ["Ausente", "Presente", "Desconhecido"]
 
-    seed = ["Normais", "Abnormais", "Desconhecido"]
+    seed = ["Normal", "Abnormal", "Desconhecido"]
 
     seed_discolor = ["Ausente", "Presente", "Desconhecido"]
 
-    seed_size = ["Normais", "lt-normais", "Desconhecido"]
+    seed_size = ["Normal", "Lt-normal", "Desconhecido"]
 
-    seed_tmt = ["Nenhum", "Fungicida", "Outro", "Desconhecido"]
+    seed_tmt = ["Nenhum", "Fungicida", "Outros", "Desconhecido"]
 
     severity = ["Leve", "Serio", "Muito serio", "Desconhecido"]
 
     shriveling = ["Ausente", "Presente", "Desconhecido"]
 
-    stem = ["Normais", "Anormais", "Desconhecido"]
+    stem = ["Normal", "Anormal", "Desconhecido"]
 
-    stem_cankers = ["Ausente", "Coberto", "Descoberto", "Acima do segundo", "Desconhecido"]
+    stem_cankers = ["Ausente", "Acima do solo", "Abaixo do solo", "Acima do segundo", "Desconhecido"]
 
-    temp = ["lt-normais", "normais", "gt-normais", "Desconhecido"]
+    temp = ["Lt-normal", "Normal", "Gt-normal", "Desconhecido"]
 
     sz1 = (25, 1)
     sz2 = (15, 0)
@@ -155,8 +155,8 @@ def pag_1():
     with open('similiriadade.json', 'r') as f:
         similaridade = json.load(f)
 
-    for key in novo_caso:
-        novo_caso[key] = similaridade[key][novo_caso[key]]
+    # for key in novo_caso
+    #     novo_caso[key] = similaridade[key][novo_caso[key]]
 
     with open('novo_caso.json', 'w') as f:
         json.dump(novo_caso, f)
