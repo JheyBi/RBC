@@ -17,7 +17,7 @@ def pag_1():
 
     fruiting_bodies = ["Ausente", "Presente", "Desconhecido"]
 
-    fruit_pods = ["Normais", "Pouco presente", "Doente", "Desconhecido"]
+    fruit_pods = ["Normais", "Poucos presentes", "Doente", "Desconhecido"]
 
     germination = ["90-100%", "80-89%", "Lt-80%", "Desconhecido"]
 
@@ -33,9 +33,9 @@ def pag_1():
 
     leafspots_halo = ["Ausente", "Sem Aereolado", "Com Aereolado", "Desconhecido"]
 
-    leafspot_size = ["Lt-1/8", "Gt-1/8", "Desconhecido"]
+    leafspot_size = ["Tam menor 1/8", "Tam maior 1/8", "Desconhecido"]
 
-    leafspot_marg = ["Sem Marg", "Com marg", "Desconhecido"]
+    leafspot_marg = ["Sem marg", "Com marg", "Desconhecido"]
 
     leaves = ["Normal", "Anormal", "Desconhecido"]
 
@@ -55,13 +55,13 @@ def pag_1():
 
     sclerotia = ["Ausente", "Presente", "Desconhecido"]
 
-    seed = ["Normal", "Abnormal", "Desconhecido"]
+    seed = ["Normal", "Anormal", "Desconhecido"]
 
     seed_discolor = ["Ausente", "Presente", "Desconhecido"]
 
     seed_size = ["Normal", "Lt-normal", "Desconhecido"]
 
-    seed_tmt = ["Nenhum", "Fungicida", "Outros", "Desconhecido"]
+    seed_tmt = ["Nenhuma", "Fungicida", "Outros", "Desconhecido"]
 
     severity = ["Leve", "Serio", "Muito serio", "Desconhecido"]
 
@@ -142,21 +142,19 @@ def pag_1():
 
         elif event == 'Proximo':
             novo_caso = values.copy()
+            for key in novo_caso:
+                if novo_caso[key] == '':
+                    novo_caso[key] = "Desconhecido"
+            with open('novo_caso.json', 'w') as f:
+                json.dump(novo_caso, f)
             break
 
     window.close()
 
 
-    # Colocando todos os valores nulos como "Desconhecido"
-    for key in novo_caso:
-        if novo_caso[key] == '':
-            novo_caso[key] = "Desconhecido"
-
-    with open('similiriadade.json', 'r') as f:
-        similaridade = json.load(f)
-
-    # for key in novo_caso
+    # for key in novo_caso:
     #     novo_caso[key] = similaridade[key][novo_caso[key]]
 
-    with open('novo_caso.json', 'w') as f:
-        json.dump(novo_caso, f)
+    
+
+    
