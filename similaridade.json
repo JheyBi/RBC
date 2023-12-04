@@ -52,13 +52,14 @@
     },
     "fruit_pods": {
         "Normal": 1,
-        "Pouco presente": 2,
+        "Poucos presentes": 2,
         "Doente": 3,
         "Desconhecido": 0
     },
     "germination": {
         "90-100%": 3,
         "80-89%": 2,
+        "80-89 %": 2,
         "Lt-80%": 1,
         "Desconhecido": 0
     },
@@ -96,12 +97,12 @@
         "Desconhecido": 0
     },
     "leafspot_size": {
-        "Lt-1/8": 1,
-        "Gt-1/8": 2,
+        "Tam menor 1/8": 1,
+        "Tam maior 1/8": 2,
         "Desconhecido": 0
     },
     "leafspot_marg": {
-        "Sem Marg": 1,
+        "Sem marg": 1,
         "Com marg": 2,
         "Desconhecido": 0
     },
@@ -154,7 +155,7 @@
     },
     "seed": {
         "Normal": 2,
-        "Abnormal": 1,
+        "Anormal": 1,
         "Desconhecido": 0
     },
     "seed_discolor": {
@@ -168,7 +169,7 @@
         "Desconhecido": 0
     },
     "seed_tmt": {
-        "Nenhum": 1,
+        "Nenhuma": 1,
         "Fungicida": 3,
         "Outros": 2,
         "Desconhecido": 0

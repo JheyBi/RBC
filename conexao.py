@@ -43,8 +43,9 @@ def valor_maximo(similaridade, key):
 def valor_minimo(similaridade, key):
     minimo = 100
     for valor in similaridade[key]:
-        if similaridade[key][valor] < minimo:
-            minimo = similaridade[key][valor]
+        if valor != "Desconhecido":
+            if similaridade[key][valor] < minimo:
+                minimo = similaridade[key][valor]
     return minimo
 
 
@@ -60,22 +61,31 @@ def calculo_similaridade_local(novo_caso, similaridade, key, antigo_caso,valor_m
 #     valor_minimo = min(antigo_caso)
 #     print(1-(abs(novo_caso_var-antigo_caso[i])/(valor_maximo-valor_minimo)))
 
+#cria um vetor dinamico similaridade_local
 similaridade_local = {}
+cur = conexao.cursor()
 for key in novo_caso:
+    similaridade_local[key] = {}
     # SELECT key FROM public.casos_casos
-    cur = conexao.cursor()
-    cur.execute(f"SELECT {key} FROM public.casos_casos")
+    cur.execute(f"SELECT {key} FROM public.casos_casospt")
     # Armazena os valores
     antigo_caso_str = cur.fetchall()
-    cur.close()
-    conexao.close()
-    valor_maximo = valor_maximo(similaridade, key)
-    valor_minimo = valor_minimo(similaridade, key)
+
+    
+    valor_maximo_var = valor_maximo(similaridade, key)
+    valor_minimo_var = valor_minimo(similaridade, key)
     for i in range(0, len(antigo_caso_str)):
-        # Adiciona em um vetor os valores de similaridade local
+        if antigo_caso_str[i][0] == None:
+            antigo_caso_str[i] = ("Desconhecido",)
         antigo_caso_int = similaridade[key][antigo_caso_str[i][0]]
-        similaridade_local[key][i] = calculo_similaridade_local(novo_caso, similaridade, key, antigo_caso_int, valor_maximo, valor_minimo)
-    break
+        # Adiciona em um vetor os valores de similaridade local
+        similaridade_local[key][i+1] = (calculo_similaridade_local(novo_caso, similaridade, key, antigo_caso_int, valor_maximo_var, valor_minimo_var))
+
+cur.close()
+conexao.close()
+
+
+
 
 
     
