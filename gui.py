@@ -3,7 +3,7 @@
 # para mac/linux
 # pip3 install PySimpleGUI
 import PySimpleGUI as sg
-from paginas.pag_1 import pag_1
+from paginas.pag_1 import pag_1, pag_2
 
 sg.theme('Reddit')
 
@@ -23,14 +23,16 @@ def pag_inicial():
 
     while True:
         event, values = window.read()
-
+        cnf = 0
         if event == sg.WIN_CLOSED or event == 'Sair':
             window.close()
             break
 
         elif event == 'Cadastrar Caso':
             window.close()
-            pag_1()
+            cnf = pag_1()
+            pag_2(cnf)
+
 
 
 pag_inicial()

@@ -124,14 +124,17 @@ def pag_1():
 
     layout = [
         [sg.Text('Caso Problema:'), sg.Text()],
-        [sg.Column(col1), sg.Column(col2)], [sg.Text('CNF  Minima:')],
-        [sg.Output()],
+        [sg.Column(col1), sg.Column(col2)], [sg.Text('CNF  Minima:'), sg.Spin([i for i in range(1, 101)], initial_value=75, key='cnf_min', size=(5, 1))],
         [sg.Column(next_button, element_justification='right', expand_x=True)],
     ]
 
     window = sg.Window('Cadastro de Produtos', layout)
 
+    # Cria um dicionario armazenar os valores do novo caso
     novo_caso = {}
+    
+    # Cnf_minimo é igual ao valor inserido
+    cnf = 0
 
     while True:
         event, values = window.read()
@@ -142,14 +145,22 @@ def pag_1():
 
         elif event == 'Proximo':
             novo_caso = values.copy()
+            # Transforma os valores nulos em "Desconhecido"
             for key in novo_caso:
                 if novo_caso[key] == '':
                     novo_caso[key] = "Desconhecido"
+
+            # Salva o novo caso em um arquivo json
             with open('novo_caso.json', 'w') as f:
                 json.dump(novo_caso, f)
+
+            # Salva o cnf minimo
+            cnf = values['cnf_min']
+
             break
 
     window.close()
+    return cnf
 
 
     # for key in novo_caso:
