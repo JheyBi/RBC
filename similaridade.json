@@ -39,7 +39,7 @@
         "Firme-seco": 1,
         "Desconhecido": 0
     },
-    "Fruit_spots": {
+    "fruit_spots": {
         "Ausente": 1,
         "Colorido": 2,
         "Escuro": 3,
