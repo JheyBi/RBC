@@ -3,7 +3,7 @@
 # para mac/linux
 # pip3 install PySimpleGUI
 import PySimpleGUI as sg
-from paginas.pag_1 import pag_1, pag_2
+from paginas import pag_1
 
 sg.theme('Reddit')
 
@@ -30,8 +30,7 @@ def pag_inicial():
 
         elif event == 'Cadastrar Caso':
             window.close()
-            cnf = pag_1()
-            pag_2(cnf)
+            pag_1.pag_1()
 
 
 

@@ -14,9 +14,9 @@ import json
 # #Conecta com o banco de dados
 # conexao = psycopg2.connect(database = DB_NAME, host = DB_HOST, user= DB_USER, password = DB_PASS, port = DB_PORT)
 
-def similaridade_global(conexao):
+def similaridade_global(conexao, cur, path):
     #Abre o arquivo do novo_caso
-    with open('novo_caso.json', 'r') as f:
+    with open(path, 'r') as f:
         novo_caso = json.load(f)
 
     #Abre o arquivo da tabela de similaridade
@@ -48,8 +48,6 @@ def similaridade_global(conexao):
     #Instancia um vetor dinamico similaridade_local que armazena todos os valores de similaridade local
     similaridade_local_dic = {}
 
-    #Cria um cursor para executar comandos SQL
-    cur = conexao.cursor()
 
     def similaridade_local(novo_caso, similaridade, similaridade_local_dic):
         #Key representa as chaves novo caso, que são as variáveis a serem analisadas
@@ -112,10 +110,7 @@ def similaridade_global(conexao):
         
         similaridade_global_dic[i+1] = somaSimilaridade/somaPesos
 
-    # Fecha o cursor e a conexão com o banco de dados
 
-    cur.close()
-    conexao.close()
 
     return similaridade_global_dic
 
